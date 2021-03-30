@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "405388759358",
+    "firebase_url": "https://projectimmersion-c1c12.firebaseio.com",
+    "project_id": "projectimmersion-c1c12",
+    "storage_bucket": "projectimmersion-c1c12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405388759358:android:ce0956a830f492ab191c6f",
+        "android_client_info": {
+          "package_name": "com.Mark.ImmersionServices"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405388759358-a42uiv2ks4jmj2qpm9lapkno4ep5tk7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-IDvB3agGy3VNRTdYu5TL1KSYRUS44No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405388759358-a42uiv2ks4jmj2qpm9lapkno4ep5tk7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405388759358:android:bc47d9365fd56f17191c6f",
+        "android_client_info": {
+          "package_name": "com.example.imersprototype3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405388759358-a42uiv2ks4jmj2qpm9lapkno4ep5tk7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-IDvB3agGy3VNRTdYu5TL1KSYRUS44No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405388759358-a42uiv2ks4jmj2qpm9lapkno4ep5tk7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405388759358:android:40eeeab91680b564191c6f",
+        "android_client_info": {
+          "package_name": "com.example.immersionservicesprototype2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405388759358-a42uiv2ks4jmj2qpm9lapkno4ep5tk7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-IDvB3agGy3VNRTdYu5TL1KSYRUS44No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405388759358-a42uiv2ks4jmj2qpm9lapkno4ep5tk7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="176dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center_horizontal"
+        android:paddingVertical="70dp"
+        android:text="Welcome to Immersion Services!"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <EditText
+        android:id="@+id/email_entry"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Email"
+        android:layout_marginBottom="30dp"
+        android:inputType="textPersonName" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/password_entry"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:layout_marginBottom="40dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <!--    <com.google.android.gms.common.SignInButton-->
+    <!--        android:id="@+id/google_sign_in_button"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_marginHorizontal="90dp"-->
+    <!--        android:layout_height="wrap_content" />-->
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="90dp"
+        android:layout_marginBottom="5dp"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="90dp"
+        android:text="Create Account" />
+
+
+
+</LinearLayout>
