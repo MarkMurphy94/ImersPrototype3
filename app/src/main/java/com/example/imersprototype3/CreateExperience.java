@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,17 +12,18 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class CreateExperience extends AppCompatActivity {
 
-    //region object variables
-    public Button AddCharacter;
-    public Button AddEvent;
-    public Button AddBranch;
-    public Button Save;
-    public EditText ExperienceName;
-    public EditText ShortDescription;
-    public EditText DetailDescription;
-    //endregion
+    public Button AddCharacter, AddEvent, AddBranch, Save;
+    public EditText ExperienceName, ShortDescription, DetailDescription;
+    String filename = "";
+    String filepath = "";
+    String filecontent = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +35,35 @@ public class CreateExperience extends AppCompatActivity {
         final DatabaseReference newDBentry = database.getReference("message");
 
         //region EditText variables
-        ExperienceName = (EditText) findViewById(R.id.editTextTextPersonName);
+        ExperienceName = (EditText) findViewById(R.id.ExperienceName);
         ExperienceName.setHint("Name your experience");
 
-        ShortDescription = (EditText) findViewById(R.id.editTextTextPersonName2);
+        ShortDescription = (EditText) findViewById(R.id.ShortDescription);
         ShortDescription.setHint("Give it a short description");
 
-        DetailDescription = (EditText) findViewById(R.id.editTextTextMultiLine2);
+        DetailDescription = (EditText) findViewById(R.id.DetailDescription);
         DetailDescription.setHint("Describe it in more detail");
         //endregion
 
-        AddCharacter = (Button) findViewById(R.id.addCharacter);
-//        AddCharacter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(CreateExperience.this, AddCharacter.class);
-//                startActivity(intent);
-//            }
-//        });
+        Save = (Button) findViewById(R.id.save);
 
-        AddEvent = (Button) findViewById(R.id.addEvent);
+        filename = "TestExperience";
+        filepath = "My Experiences";
+
+        if(!ExternalStorageAvailableForRW()){
+            Save.setEnabled(false);
+        }
+
+        AddCharacter = (Button) findViewById(R.id.addCharacter);
+        AddCharacter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateExperience.this, AddCharacter.class);
+                startActivity(intent);
+            }
+        });
+
+//        AddEvent = (Button) findViewById(R.id.addEvent);
 //        AddEvent.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -60,8 +71,8 @@ public class CreateExperience extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-
-        AddBranch = (Button) findViewById(R.id.AddBranch);
+//
+//        AddBranch = (Button) findViewById(R.id.AddBranch);
 //        AddBranch.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -70,16 +81,42 @@ public class CreateExperience extends AppCompatActivity {
 //            }
 //        });
 
-        Save = (Button) findViewById(R.id.save);
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreateExperience.this, MainActivity.class);
-                //newDBentry.setValue(ExperienceName.getText().toString());
+                String Name = ExperienceName.getText().toString().trim();
+                String Short = ShortDescription.getText().toString().trim();
+                String Detail = DetailDescription.getText().toString().trim();
+
+                if(!Name.equals("")){
+                    File newExperience = new File(getExternalFilesDir(filepath), Name + ".txt");
+                    FileOutputStream fos = null;
+                    try {
+                        fos = new FileOutputStream(newExperience);
+                        fos.write(Name.getBytes());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(CreateExperience.this, "Experience saved", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(CreateExperience.this, "Enter a name for the experience", Toast.LENGTH_SHORT).show();
+                }
+
                 startActivity(intent);
             }
         });
 
+    }
+
+    private boolean ExternalStorageAvailableForRW(){
+        String state = Environment.getExternalStorageState();
+        if(state.equals(Environment.MEDIA_MOUNTED)){
+            return true;
+        }
+        return false;
     }
 
 }

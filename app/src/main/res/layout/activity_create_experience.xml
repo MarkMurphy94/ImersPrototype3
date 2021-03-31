@@ -7,7 +7,7 @@
     tools:context=".CreateExperience">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/ExperienceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -15,17 +15,15 @@
         android:layout_marginTop="39dp"
         android:layout_marginEnd="185dp"
         android:layout_marginRight="185dp"
-        android:layout_marginBottom="14dp"
         android:ems="10"
         android:hint="Name your Experience"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/ShortDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,17 +31,15 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="185dp"
         android:layout_marginRight="185dp"
-        android:layout_marginBottom="33dp"
         android:ems="10"
         android:hint="Give it a short description"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/ExperienceName" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine2"
+        android:id="@+id/DetailDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -56,10 +52,10 @@
         android:gravity="start|top"
         android:hint="Give it a longer description"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/addCharacter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/ShortDescription" />
 
     <Button
         android:id="@+id/addCharacter"
@@ -72,8 +68,9 @@
         android:layout_marginRight="246dp"
         android:text="Add a character"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
+        app:layout_constraintTop_toBottomOf="@+id/DetailDescription" />
 
     <Button
         android:id="@+id/addEvent"
@@ -84,7 +81,7 @@
         android:layout_marginEnd="272dp"
         android:layout_marginRight="272dp"
         android:layout_marginBottom="156dp"
-        android:text="Add an event"
+        android:text="Add event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
