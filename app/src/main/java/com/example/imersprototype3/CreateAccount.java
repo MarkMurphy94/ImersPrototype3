@@ -34,16 +34,16 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_create_account);
         mAuth = FirebaseAuth.getInstance();
 
-        add_name = (EditText) findViewById(R.id.add_name);
-        add_email = (EditText) findViewById(R.id.add_email);
-        add_username = (EditText) findViewById(R.id.add_username);
-        add_password = (EditText) findViewById(R.id.add_password);
+        add_name = findViewById(R.id.add_name);
+        add_email = findViewById(R.id.add_email);
+        add_username = findViewById(R.id.add_username);
+        add_password = findViewById(R.id.add_password);
 
-        create = (Button) findViewById(R.id.create);
-        back = (Button) findViewById(R.id.back);
+        create = findViewById(R.id.create);
+        back = findViewById(R.id.back);
         create.setOnClickListener(this);
 
-        progress_bar = (ProgressBar) findViewById(R.id.progressBar2);
+        progress_bar = findViewById(R.id.progressBar2);
 
     }
 

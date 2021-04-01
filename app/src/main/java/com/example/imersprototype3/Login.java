@@ -33,14 +33,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
 
-        create_account_button = (Button) findViewById(R.id.create_account_button);
+        create_account_button = findViewById(R.id.create_account_button);
         create_account_button.setOnClickListener(this);
-        login = (Button) findViewById(R.id.login);
+        login = findViewById(R.id.login);
         login.setOnClickListener(this);
 
-        email_entry = (EditText) findViewById(R.id.email_entry);
-        password_entry = (EditText) findViewById(R.id.password_entry);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        email_entry = findViewById(R.id.email_entry);
+        password_entry = findViewById(R.id.password_entry);
+        progressBar = findViewById(R.id.progressBar);
 
     }
 

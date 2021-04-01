@@ -35,17 +35,17 @@ public class CreateExperience extends AppCompatActivity {
         final DatabaseReference newDBentry = database.getReference("message");
 
         //region EditText variables
-        ExperienceName = (EditText) findViewById(R.id.ExperienceName);
+        ExperienceName = findViewById(R.id.ExperienceName);
         ExperienceName.setHint("Name your experience");
 
-        ShortDescription = (EditText) findViewById(R.id.ShortDescription);
+        ShortDescription = findViewById(R.id.ShortDescription);
         ShortDescription.setHint("Give it a short description");
 
-        DetailDescription = (EditText) findViewById(R.id.DetailDescription);
+        DetailDescription = findViewById(R.id.DetailDescription);
         DetailDescription.setHint("Describe it in more detail");
         //endregion
 
-        Save = (Button) findViewById(R.id.save);
+        Save = findViewById(R.id.save);
 
         filename = "TestExperience";
         filepath = "My Experiences";
@@ -54,7 +54,7 @@ public class CreateExperience extends AppCompatActivity {
             Save.setEnabled(false);
         }
 
-        AddCharacter = (Button) findViewById(R.id.addCharacter);
+        AddCharacter = findViewById(R.id.addCharacter);
         AddCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
