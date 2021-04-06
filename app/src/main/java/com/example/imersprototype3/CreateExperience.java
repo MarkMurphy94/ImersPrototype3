@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class CreateExperience extends AppCompatActivity {
@@ -47,7 +48,7 @@ public class CreateExperience extends AppCompatActivity {
 
         Save = findViewById(R.id.save);
 
-        filename = "TestExperience";
+        filename = "";
         filepath = "My Experiences";
 
         if(!ExternalStorageAvailableForRW()){
@@ -85,21 +86,15 @@ public class CreateExperience extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreateExperience.this, MainActivity.class);
-                String Name = ExperienceName.getText().toString().trim();
-                String Short = ShortDescription.getText().toString().trim();
+                filename = ExperienceName.getText().toString().trim();
+                filecontent = ShortDescription.getText().toString().trim();
                 String Detail = DetailDescription.getText().toString().trim();
 
-                if(!Name.equals("")){
-                    File newExperience = new File(getExternalFilesDir(filepath), Name + ".txt");
-                    FileOutputStream fos = null;
-                    try {
-                        fos = new FileOutputStream(newExperience);
-                        fos.write(Name.getBytes());
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if(!filecontent.equals("")){
+                    //File newExperience = new File(getExternalFilesDir(filepath), filename + ".txt");
+                    //FileOutputStream fos = null;
+                    writeToFile(filecontent);
+
                     Toast.makeText(CreateExperience.this, "Experience saved", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(CreateExperience.this, "Enter a name for the experience", Toast.LENGTH_SHORT).show();
@@ -117,6 +112,22 @@ public class CreateExperience extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private void writeToFile(String content) {
+        try {
+            File file = new File(getExternalFilesDir(filepath), filename + ".txt");
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter writer = new FileWriter(file);
+            writer.append(content);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
