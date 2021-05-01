@@ -1,22 +1,28 @@
 package com.example.imersprototype3;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateExperience extends AppCompatActivity {
 
@@ -24,7 +30,7 @@ public class CreateExperience extends AppCompatActivity {
     public EditText ExperienceName, ShortDescription, DetailDescription;
     String filename = "";
     String filepath = "";
-    String filecontent = "";
+    String short_description = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,7 @@ public class CreateExperience extends AppCompatActivity {
         filename = "";
         filepath = "My Experiences";
 
-        if(!ExternalStorageAvailableForRW()){
+        if (!ExternalStorageAvailableForRW()) {
             Save.setEnabled(false);
         }
 
@@ -86,25 +92,47 @@ public class CreateExperience extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreateExperience.this, MainActivity.class);
-                filename = ExperienceName.getText().toString().trim();
-                filecontent = ShortDescription.getText().toString().trim();
+                String filename = ExperienceName.getText().toString().trim();
+                String short_description = ShortDescription.getText().toString().trim();
                 String Detail = DetailDescription.getText().toString().trim();
 
-                if(!filecontent.equals("")){
-                    //File newExperience = new File(getExternalFilesDir(filepath), filename + ".txt");
-                    //FileOutputStream fos = null;
-                    writeToFile(filecontent);
+                Map<String, Object> city = new HashMap<>();
+                city.put("experience name", filename);
+                city.put("short desc.", short_description);
+                city.put("detail desc.", Detail);
 
-                    Toast.makeText(CreateExperience.this, "Experience saved", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(CreateExperience.this, "Enter a name for the experience", Toast.LENGTH_SHORT).show();
-                }
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("experiences").document(filename)
+                        .set(city)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(CreateExperience.this, "Experience saved", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("Error writing document", e);
+                                Toast.makeText(CreateExperience.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
                 startActivity(intent);
+//                if (!short_description.equals("")) {
+//                    //File newExperience = new File(getExternalFilesDir(filepath), filename + ".txt");
+//                    //FileOutputStream fos = null;
+//                    writeToFile(short_description);
+//
+//                    Toast.makeText(CreateExperience.this, "Experience saved", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(CreateExperience.this, "Enter a name for the experience", Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
-
     }
+
 
     private boolean ExternalStorageAvailableForRW(){
         String state = Environment.getExternalStorageState();
