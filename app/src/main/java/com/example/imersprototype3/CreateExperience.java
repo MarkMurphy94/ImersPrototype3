@@ -39,6 +39,7 @@ public class CreateExperience extends AppCompatActivity {
 
         // New instance of DB entry
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
         final DatabaseReference newDBentry = database.getReference("message");
 
         //region EditText variables
@@ -101,7 +102,6 @@ public class CreateExperience extends AppCompatActivity {
                 city.put("short desc.", short_description);
                 city.put("detail desc.", Detail);
 
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("experiences").document(filename)
                         .set(city)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
