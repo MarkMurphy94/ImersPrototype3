@@ -97,13 +97,13 @@ public class CreateExperience extends AppCompatActivity {
                 String short_description = ShortDescription.getText().toString().trim();
                 String Detail = DetailDescription.getText().toString().trim();
 
-                Map<String, Object> city = new HashMap<>();
-                city.put("experience name", filename);
-                city.put("short desc.", short_description);
-                city.put("detail desc.", Detail);
+                Map<String, Object> experience = new HashMap<>();
+                experience.put("experience name", filename);
+                experience.put("short desc.", short_description);
+                experience.put("detail desc.", Detail);
 
                 db.collection("experiences").document(filename)
-                        .set(city)
+                        .set(experience)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
