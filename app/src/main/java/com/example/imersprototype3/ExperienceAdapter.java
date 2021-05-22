@@ -24,12 +24,6 @@ public class ExperienceAdapter extends FirestoreRecyclerAdapter<Experience, Expe
         super(options);
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull ExperienceHolder holder, int position, @NonNull Experience model) {
-        holder.name.setText(Experience.getTitle());
-        //TODO: 5/16/2021 get thumbnail image here somehow, if we decide on thumbnails.
-    }
-
     @NonNull
     @Override
     public ExperienceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,7 +31,14 @@ public class ExperienceAdapter extends FirestoreRecyclerAdapter<Experience, Expe
         return new ExperienceHolder(view);
     }
 
-    static class ExperienceHolder extends RecyclerView.ViewHolder{
+    @Override
+    protected void onBindViewHolder(@NonNull ExperienceHolder holder, int position, @NonNull Experience model) {
+        holder.name.setText(Experience.getTitle());
+        //TODO: 5/16/2021 get thumbnail image here somehow, if we decide on thumbnails.
+
+    }
+
+    static class ExperienceHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView name;
 

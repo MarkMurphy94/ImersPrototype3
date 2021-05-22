@@ -58,16 +58,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerView(){
-        Query query = experiences.orderBy("priority", Query.Direction.DESCENDING);
+        Query query = experiences.orderBy("experience name", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Experience> options = new FirestoreRecyclerOptions.Builder<Experience>()
                 .setQuery(query, Experience.class)
                 .build();
 
         adapter = new ExperienceAdapter(options);
+        LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(layout);
         recyclerView.setAdapter(adapter);
     }
 

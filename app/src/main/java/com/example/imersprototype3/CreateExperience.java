@@ -99,8 +99,8 @@ public class CreateExperience extends AppCompatActivity {
 
                 Map<String, Object> experience = new HashMap<>();
                 experience.put("experience name", filename);
-                experience.put("short desc.", short_description);
-                experience.put("detail desc.", Detail);
+                experience.put("short desc", short_description);
+                experience.put("detail desc", Detail);
 
                 db.collection("experiences").document(filename)
                         .set(experience)
